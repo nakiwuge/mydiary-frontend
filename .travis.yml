@@ -4,7 +4,7 @@ node_js:
   - "10"
 addons:
     code_climate:
-        repo_token: $supersecrettoken
+        repo_token: $token
 env:
   matrix:
   - REACT=16.6
@@ -14,9 +14,8 @@ before_script:
   - npm install -g codeclimate-test-reporter
 
 script:
-  - npm run lint
   - npm run test
-
+  
 after_success:
   - npm run coverage
   - codeclimate-test-reporter < ./coverage/lcov.info
