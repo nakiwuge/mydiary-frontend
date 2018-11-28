@@ -1,4 +1,4 @@
-import { registerUser } from "../../actions/authActions/auth";
+import { registerUser, loginUser} from "../../actions/authActions/auth";
 import { BASE_URL } from "../../baseUrl";
 import configureMockStore from "redux-mock-store";
 import MockAdapter from "axios-mock-adapter";
@@ -8,7 +8,7 @@ const response_data = {
   message: ""
 };
 
-describe("socialAuth actions", () => {
+describe("auth actions", () => {
   let store;
   let mock;
   beforeEach(() => {
@@ -17,9 +17,14 @@ describe("socialAuth actions", () => {
     store = mockStore({});
   });
 
-  it("the facebookAuth action should be able to return a user ", () => {
+  it("the registerUser action should be able to return a user ", () => {
     mock.onPost(BASE_URL + "/auth/signup").reply(200, response_data);
     registerUser(response_data)(store.dispatch);
+    expect(store.getActions()).toEqual([]);
+  });
+  it("the loginUser action should be able to return a user ", () => {
+    mock.onPost(BASE_URL + "/auth/login").reply(200, response_data);
+    loginUser(response_data)(store.dispatch);
     expect(store.getActions()).toEqual([]);
   });
 });
