@@ -7,7 +7,7 @@ describe("authReducer", () => {
       user: {}
     });
   });
-  it("updates state on SOCIAL_AUTH action type", () => {
+  it("updates state on REGISTER action type", () => {
     expect(
       authReducer(undefined, {
         type: ACTION_TYPES.REGISTER,
@@ -15,6 +15,16 @@ describe("authReducer", () => {
       })
     ).toEqual({
       user: { message: "register" }
+    });
+  });
+  it("updates state on LOGIN action type", () => {
+    expect(
+      authReducer(undefined, {
+        type: ACTION_TYPES.LOGIN,
+        payload: { message: "login",token:"hh34jj" }
+      })
+    ).toEqual({
+      user: { message: "login",token:"hh34jj" }
     });
   });
 });

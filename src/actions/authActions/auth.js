@@ -10,3 +10,11 @@ export const registerUser = userData => dispatch => {
     });
   });
 };
+export const loginUser = userData => dispatch => {
+  axios.post(BASE_URL + "/auth/login", userData).then(res => {
+    dispatch({
+      type: ACTION_TYPES.LOGIN,
+      payload: res.data
+    });
+  });
+};
