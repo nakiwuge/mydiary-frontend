@@ -1,1 +1,4 @@
-export const ACTION_TYPES = {};
+export const ACTION_TYPES = {
+  LOGIN: "LOGIN",
+  REGISTER: "REGISTER"
+};

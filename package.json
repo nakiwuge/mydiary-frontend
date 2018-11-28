@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "availity-reactstrap-validation": "^2.3.3",
+    "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "reactstrap": "^6.5.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.6",
     "redux-thunk": "^2.3.0"
@@ -30,8 +33,16 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "redux-mock-store": "^1.5.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**",
+      "!src/index.js"
+    ]
   }
 }

@@ -19,4 +19,3 @@ script:
 after_success:
   - npm run coverage
   - codeclimate-test-reporter < ./coverage/lcov.info
-
