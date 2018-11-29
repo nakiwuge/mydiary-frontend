@@ -3,6 +3,7 @@ import LoginView from "../../views/authViews/login";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loginUser } from "../../actions/authActions/auth";
+import { getEntries } from "../../actions/entries/entries";
 
 export class Login extends Component {
   state = {
@@ -26,7 +27,9 @@ export class Login extends Component {
       password: this.state.password
     };
     this.props.loginUser(userData);
+    
   };
+  
   render() {
     const props = {
       handleSubmit: this.handleSubmit,
@@ -47,5 +50,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser, getEntries }
 )(Login);

@@ -12,14 +12,14 @@ body {
     width: 60%; 
     margin-top: 5%;   
 }
-header{
+.navContainer{
+    margin:auto;
     background: #333;
-    min-height: 70x; 
-	
-   
+    overflow: hidden;
+
 }
-header a{  
-    display:inline;
+.navContainer a{  
+
     color: #f2f2f2;
     padding:0 20px 0 20px;
     font-size: 17px;
@@ -34,7 +34,12 @@ nav{
     float:left;
     margin:0;
 }
+#brand-name a:hover{
+    text-decoration: none;  
+    color: #f2f2f2;
+}
 nav  a:hover {
+    text-decoration: none;  
     background: #ddd;
     color: black;
   }
@@ -131,25 +136,24 @@ a{
 }
 .text{
     display: inline;
+}
 
-}
-#table-data{
-    overflow-x: auto;
-}
 table {
+    overflow-x: auto;
     font-family: arial, sans-serif;
     border-collapse: collapse;
+    width: 50%;
 }
 table a{
+    
     display: block;
-    align-items: center;
     color :rgb(37, 36, 36);
 }
 table a:hover {
     background: transparent;
     color: rgb(55, 99, 194);
+    text-decoration: none;  
   }
-
 
 td, th {
     border: 0px;
@@ -182,5 +186,10 @@ textarea{
     color:rgba(34, 34, 199, 0.664);
     font-size: 20px
 }
-   
+.view-entries{
+    
+    margin-left:30%; 
+    margin-top:auto; 
+    left:50%;
+} 
  
