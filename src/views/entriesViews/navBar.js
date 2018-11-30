@@ -11,7 +11,7 @@ const NavBar = () => {
       <div>
         <nav>
           <a href="/home">Home</a>
-          <a href="#">Add Entry</a>
+          <a href="/create">Add Entry</a>
           <div className="nav-right">
             <a href="#">Profile</a>
             <a href="#">Logout</a>

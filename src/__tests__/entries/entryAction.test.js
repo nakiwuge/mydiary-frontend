@@ -2,7 +2,7 @@ import { BASE_URL } from "../../baseUrl";
 import configureMockStore from "redux-mock-store";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
-import { getEntries } from "../../actions/entries/entries";
+import { getEntries, addEntry } from "../../actions/entries/entries";
 
 const response_data = {
   message: ""
@@ -18,6 +18,11 @@ describe("entry actions", () => {
   it("the getEntry action should be able to entries ", () => {
     mock.onGet(BASE_URL + "/entries").reply(200, response_data);
     getEntries(response_data)(store.dispatch);
+    expect(store.getActions()).toEqual([]);
+  });
+  it("the getEntry action should be able to entries ", () => {
+    mock.onPost(BASE_URL + "/entries").reply(200, response_data);
+    addEntry(response_data)(store.dispatch);
     expect(store.getActions()).toEqual([]);
   });
 });

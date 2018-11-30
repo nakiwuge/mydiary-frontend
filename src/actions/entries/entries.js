@@ -11,3 +11,12 @@ export const getEntries = () => dispatch => {
     });
   });
 };
+export const addEntry = data => dispatch => {
+  
+  axios.post(BASE_URL + "/entries", data, headers()).then(res => {
+    dispatch({
+      type: ACTION_TYPES.ADD_ENTRY,
+      payload: res.data
+    });
+  });
+};

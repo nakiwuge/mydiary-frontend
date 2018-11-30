@@ -4,7 +4,8 @@ import entryReducer from "../../reducers/entries";
 describe("entryReducer", () => {
   it("has a default state", () => {
     expect(entryReducer(undefined, { type: "unexpected" })).toEqual({
-      entries: []
+      entries: [],
+      message:{}
     });
   });
   it("updates state on FETCH_ALL action type", () => {
@@ -14,7 +15,19 @@ describe("entryReducer", () => {
         payload: { message: "register" }
       })
     ).toEqual({
-      entries: { message: "register" }
+      entries: { message: "register" },
+      message:{}
+    });
+  });
+  it("updates state on ADD_ action type", () => {
+    expect(
+      entryReducer(undefined, {
+        type: ACTION_TYPES.ADD_ENTRY,
+        payload: { message: "register" }
+      })
+    ).toEqual({
+      entries: [],
+      message: "register" 
     });
   });
 });
