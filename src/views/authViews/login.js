@@ -9,7 +9,6 @@ const LoginView = props => {
       <AvForm className="text-avfield" onSubmit={props.handleSubmit}>
         <h1 id="welcome_text">Welcome to My Diary</h1>
         <h3>Please login with your account details</h3>
-        <p className="error">{props.error}</p>
         <hr />
 
         <AvField

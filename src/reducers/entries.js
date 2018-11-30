@@ -1,7 +1,8 @@
 import { ACTION_TYPES } from "../actions/actionTypes";
 
 const initialState = {
-  entries: []
+  entries: [],
+  message:{}
 };
 
 export default function entryReducer(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function entryReducer(state = initialState, action) {
     return {
       ...state,
       entries: action.payload
+    };
+  case ACTION_TYPES.ADD_ENTRY:
+    return {
+      ...state,
+      message: action.payload.message
     };
   default:
     return state;

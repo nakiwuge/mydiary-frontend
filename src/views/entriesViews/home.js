@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 const Home = props => {
   const entries = props.entries.map(entry => (
     <div className="view-entries" key={entry.id}>
-    
-      <table>
+      <table >
         <tbody>
           <tr>
             <td>
@@ -27,7 +26,7 @@ const Home = props => {
   return (
     <div>
       <NavBar />
-      <p></p>
+      <p />
       {entries}
     </div>
   );
