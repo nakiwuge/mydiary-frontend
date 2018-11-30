@@ -16,5 +16,6 @@ export const loginUser = userData => dispatch => {
       type: ACTION_TYPES.LOGIN,
       payload: res.data
     });
+    localStorage.setItem("token",res.data.token);
   });
 };
