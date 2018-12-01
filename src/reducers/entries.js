@@ -23,6 +23,11 @@ export default function entryReducer(state = initialState, action) {
       ...state,
       result: action.payload
     };
+  case ACTION_TYPES.EDIT_ENTRY:
+    return {
+      ...state,
+      result: action.payload
+    };
   default:
     return state;
   }
