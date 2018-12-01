@@ -31,4 +31,10 @@ describe("entry actions", () => {
     getEntry(response_data)(store.dispatch);
     expect(store.getActions()).toEqual([]);
   });
+  it("the getEntry action should be able to entries ", () => {
+    mock.onGet(BASE_URL + `/entries/${id}`).reply(200, response_data);
+    getEntry(response_data)(store.dispatch);
+    expect(store.getActions()).toEqual([]);
+  });
+
 });

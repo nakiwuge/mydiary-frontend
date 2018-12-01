@@ -15,6 +15,7 @@ export class CreateEntry extends Component {
     }
 
   }
+ 
   handleChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
@@ -34,7 +35,8 @@ export class CreateEntry extends Component {
       title: this.state.title,
       content: this.state.content,
       handleChange: this.handleChange,
-      error:this.props.message
+      error:this.props.message,
+
     };
     return <CreateEntryView {...props} />;
   }

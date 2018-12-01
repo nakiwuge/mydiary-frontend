@@ -8,11 +8,12 @@ import { getEntries } from "../../actions/entries/entries";
 export class Login extends Component {
   state = {
     email: "",
-    password: "",
+    password: ""
   };
-  componentWillReceiveProps(nextProps){
-    if (nextProps.user.token){
-      nextProps.history.push("/home");
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user.token) {
+      localStorage.setItem("token", nextProps.user.token);
+      window.location = "/home";
     }
   }
   handleChange = e => {
@@ -27,16 +28,15 @@ export class Login extends Component {
       password: this.state.password
     };
     this.props.loginUser(userData);
-    
   };
-  
+
   render() {
     const props = {
       handleSubmit: this.handleSubmit,
       handleChange: this.handleChange,
       email: this.state.email,
       password: this.state.password,
-      error:this.props.user.message
+      error: this.props.user.message
     };
     return <LoginView {...props} />;
   }

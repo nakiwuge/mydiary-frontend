@@ -12,7 +12,6 @@ export const getEntries = () => dispatch => {
   });
 };
 export const addEntry = data => dispatch => {
-  
   axios.post(BASE_URL + "/entries", data, headers()).then(res => {
     dispatch({
       type: ACTION_TYPES.ADD_ENTRY,
@@ -21,11 +20,18 @@ export const addEntry = data => dispatch => {
   });
 };
 export const getEntry = id => dispatch => {
-  
   axios.get(BASE_URL + `/entries/${id}`, headers()).then(res => {
     dispatch({
       type: ACTION_TYPES.GET_ENTRY,
-      payload:res.data.entry[0]
+      payload: res.data.entry[0]
+    });
+  });
+};
+export const editEntry = (id, data) => dispatch => {
+  axios.put(BASE_URL + `/entries/${id}`, data, headers()).then(res => {
+    dispatch({
+      type: ACTION_TYPES.EDIT_ENTRY,
+      payload: res.data
     });
   });
 };
