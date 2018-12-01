@@ -5,7 +5,8 @@ describe("entryReducer", () => {
   it("has a default state", () => {
     expect(entryReducer(undefined, { type: "unexpected" })).toEqual({
       entries: [],
-      message:{}
+      message: {},
+      result: {}
     });
   });
   it("updates state on FETCH_ALL action type", () => {
@@ -16,10 +17,11 @@ describe("entryReducer", () => {
       })
     ).toEqual({
       entries: { message: "register" },
-      message:{}
+      message: {},
+      result: {}
     });
   });
-  it("updates state on ADD_ action type", () => {
+  it("updates state on ADD_ENTRY action type", () => {
     expect(
       entryReducer(undefined, {
         type: ACTION_TYPES.ADD_ENTRY,
@@ -27,7 +29,20 @@ describe("entryReducer", () => {
       })
     ).toEqual({
       entries: [],
-      message: "register" 
+      message: "register",
+      result: {}
+    });
+  });
+  it("updates state on GET_ENTRY action type", () => {
+    expect(
+      entryReducer(undefined, {
+        type: ACTION_TYPES.GET_ENTRY,
+        payload: { title: "" }
+      })
+    ).toEqual({
+      entries: [],
+      message: {},
+      result: { title: "" }
     });
   });
 });

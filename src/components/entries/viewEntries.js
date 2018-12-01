@@ -8,9 +8,14 @@ export class ViewEntries extends Component {
   componentWillMount() {
     this.props.getEntries();
   }
+  handleClick=(id)=>{
+    this.props.history.push(`/home/${id}`);
+
+  }
   render() {
     const props = {
-      entries: this.props.entries
+      entries: this.props.entries,
+      handleClick:this.handleClick
     };
     return <Home {...props} />;
   }

@@ -15,4 +15,5 @@ describe("ViewEntries component", () => {
     wrapper.setProps({ entries: { message: "yes" } });
     expect(wrapper.instance().props.entries).toEqual({ message: "yes" });
   });
+  
 });

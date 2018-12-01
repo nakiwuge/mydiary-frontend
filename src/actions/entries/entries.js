@@ -20,3 +20,12 @@ export const addEntry = data => dispatch => {
     });
   });
 };
+export const getEntry = id => dispatch => {
+  
+  axios.get(BASE_URL + `/entries/${id}`, headers()).then(res => {
+    dispatch({
+      type: ACTION_TYPES.GET_ENTRY,
+      payload:res.data.entry[0]
+    });
+  });
+};

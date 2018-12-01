@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 const Home = props => {
   const entries = props.entries.map(entry => (
-    <div className="view-entries" key={entry.id}>
+    
+    <div className="view-entries" key={entry.Entry_id}>
       <table >
         <tbody>
           <tr>
@@ -13,7 +14,7 @@ const Home = props => {
             </td>
             <td>{entry.date}</td>
             <td>
-              <a className="info-text" href="#">
+              <a onClick={()=>props.handleClick(entry.Entry_id)} className="info-text" href="#">
                 view
               </a>
             </td>
@@ -32,6 +33,7 @@ const Home = props => {
   );
 };
 Home.propTypes = {
-  entries: PropTypes.array
+  entries: PropTypes.array,
+  handleClick:PropTypes.func
 };
 export default Home;
