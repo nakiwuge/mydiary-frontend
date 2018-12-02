@@ -2,6 +2,7 @@ import React from "react";
 import "../../css/main.css";
 import PropTypes from "prop-types";
 import { AvForm, AvField } from "availity-reactstrap-validation";
+import ReactLoading from "react-loading";
 
 const RegisterView = props => {
   return (
@@ -75,9 +76,10 @@ const RegisterView = props => {
         </button>
         <div>
           <p className="text info-text">Already have an account? </p>
-          <a href="index.html">login here</a>
+          <a href="/">login here</a>
         </div>
       </AvForm>
+      <ReactLoading className="loader" type="spin" hidden={props.hidden} />
     </div>
   );
 };
@@ -88,6 +90,7 @@ RegisterView.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
   confirmPassword: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  hidden:PropTypes.bool
 };
 export default RegisterView;

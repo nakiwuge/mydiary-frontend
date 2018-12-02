@@ -8,9 +8,9 @@ body {
     
 }
 .container{
-    margin:auto;
-    width: 60%; 
-    margin-top: 5%;   
+    margin:0 auto;
+    margin-top: 5%;  
+
 }
 .navContainer{
     margin:auto;
@@ -24,20 +24,7 @@ body {
     padding:0 20px 0 20px;
     font-size: 17px;
 }
-nav{
-    margin-top: 50px;
-}
-.nav-right{
-    float:right;
-}
-#brand-name{
-    float:left;
-    margin:0;
-}
-#brand-name a:hover{
-    text-decoration: none;  
-    color: #f2f2f2;
-}
+
 nav  a:hover {
     text-decoration: none;  
     background: #ddd;
@@ -73,19 +60,23 @@ nav  a:hover {
     color:black;
 }
 
-input{
+ #add_content { 
     display:block;
-    width: 60%;
-    border-radius: 20px;
-}
-input[type=text],textarea {
-    display:block;
-    width: 100%;
+    width: 50%; 
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
    
+} 
+#add_title {
+    display:block;
+    width: 50%; 
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
 }
+
 button[type=submit] {
     background-color:#4286f4;
     color:rgb(239, 239, 243);
@@ -123,13 +114,10 @@ input[type=email] {
     box-sizing: border-box;
 }
 
-
 form {
-    margin-left: auto;
-    margin-right:auto;
-    width: 60%;
+    margin-top: 5%;
+    margin-left: 25%;
 }
-
 
 a{
     text-decoration: none;  
@@ -138,36 +126,12 @@ a{
     display: inline;
 }
 
-table {
-    overflow-x: auto;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 50%;
-}
-table a{
-    
-    display: block;
-    color :rgb(37, 36, 36);
-}
-table a:hover {
-    background: transparent;
-    color: rgb(55, 99, 194);
-    text-decoration: none;  
-  }
-
-td, th {
-    border: 0px;
-    text-align: left;
-    padding: 8px;
-   
-}
 #welcome_text{
     color:rgb(3, 49, 49); 
     background-color:rgba(233, 233, 233, 0.377);
     text-align: center;
     font-family:Courier;
-
-
+    width: 70%;
 }
 .info-text{
    color:rgba(34, 34, 199, 0.664);
@@ -175,12 +139,12 @@ td, th {
 #signup-bg{
     background-color:rgba(233, 233, 233, 0.377);
 }
-textarea{
-    height:200px;
 
-}
 .error{
     color: red;
+}
+.success{
+    color:green;
 }
 .text-p{
     color:rgba(34, 34, 199, 0.664);
@@ -188,11 +152,48 @@ textarea{
 }
 .view-entries{
     
-    margin-left:30%; 
-    margin-top:auto; 
-    left:50%;
+  width:50%;
+margin:auto;
+margin-top:2%;
+
+    margin-bottom: 1%; 
 } 
 .modal-body input{
     border-radius: 0px;
     width: 100%;
+}
+.loader{
+    color:red;
+    margin-left:50%;
+}
+.bg-light{
+    background-color:#333;
+}
+nav{
+    margin-top:0;
+    
+}
+.navbar{
+    padding:2rem 2rem
+}
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(239, 239, 243);
+}
+
+.navbar-light .navbar-brand {
+    color: rgb(239, 239, 243);
+    font-size:30px;
+}
+#add_entry{
+    width: 50%;
+    margin:0 auto;
+    margin-top:10%;  
+}
+#text-edit {
+    width: 100%;
+}
+#welcome-card{
+    width: 50%;
+    margin:0 auto;
+    margin-top:1%;
 }

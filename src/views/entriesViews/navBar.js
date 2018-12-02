@@ -1,27 +1,36 @@
 import React from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
 
 const NavBar = () => {
   return (
     <div className="navContainer">
-      <div id="brand-name">
-        <a href="/home">
-          <h2>My Diary</h2>
-        </a>
-      </div>
-      <div>
-        <nav>
-          <a href="/home">Home</a>
-          <a href="/create">Add Entry</a>
-          <div className="nav-right">
-            <a href="#">Profile</a>
-            <a href="/" onClick={handleClick}>Logout</a>
-          </div>
-        </nav>
-      </div>
+      <Navbar  light expand="md">
+        <NavbarBrand href="/home">My Diary</NavbarBrand>
+
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <NavLink id="home-link"href="/home">Home</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/create">Add Entry</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/" onClick={handleClick}>
+              Logout
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Navbar>
     </div>
   );
 };
 export default NavBar;
-const handleClick =()=>{
+const handleClick = () => {
   localStorage.clear();
 };

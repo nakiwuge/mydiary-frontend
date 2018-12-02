@@ -5,10 +5,16 @@ import { headers } from "../../utils.js";
 
 export const getEntries = () => dispatch => {
   axios.get(BASE_URL + "/entries", headers()).then(res => {
-    dispatch({
-      type: ACTION_TYPES.FETCH_ALL,
-      payload: res.data.entries
-    });
+
+    if (res.data.entries) {
+      dispatch({
+        type: ACTION_TYPES.FETCH_ALL,
+        payload: res.data
+      });
+    } else {
+      dispatch({type:ACTION_TYPES.NO_ENTRY,
+        payload: res.data});
+    }
   });
 };
 export const addEntry = data => dispatch => {
@@ -35,7 +41,7 @@ export const editEntry = (id, data) => dispatch => {
     });
   });
 };
-export const deleteEntry = (id) => dispatch => {
+export const deleteEntry = id => dispatch => {
   axios.delete(BASE_URL + `/entries/${id}`, headers()).then(res => {
     dispatch({
       type: ACTION_TYPES.DELETE,

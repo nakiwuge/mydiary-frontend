@@ -6,7 +6,8 @@ describe("entryReducer", () => {
     expect(entryReducer(undefined, { type: "unexpected" })).toEqual({
       entries: [],
       message: {},
-      result: {}
+      result: {},
+      display:"none"
     });
   });
   it("updates state on FETCH_ALL action type", () => {
@@ -16,9 +17,10 @@ describe("entryReducer", () => {
         payload: { message: "register" }
       })
     ).toEqual({
-      entries: { message: "register" },
+      entries: undefined,
       message: {},
-      result: {}
+      result: {},
+      display:""
     });
   });
   it("updates state on ADD_ENTRY action type", () => {
@@ -30,7 +32,8 @@ describe("entryReducer", () => {
     ).toEqual({
       entries: [],
       message: "register",
-      result: {}
+      result: {},
+      display:"none"
     });
   });
   it("updates state on GET_ENTRY action type", () => {
@@ -42,7 +45,8 @@ describe("entryReducer", () => {
     ).toEqual({
       entries: [],
       message: {},
-      result: { title: "" }
+      result: { title: "" },
+      display:"none"
     });
   });
   it("updates state on EDIT_ENTRY action type", () => {
@@ -54,7 +58,8 @@ describe("entryReducer", () => {
     ).toEqual({
       entries: [],
       message: {},
-      result: { title: "" }
+      result: { title: "" },
+      display:"none"
     });
   });
   it("updates state on DELETE action type", () => {
@@ -66,7 +71,8 @@ describe("entryReducer", () => {
     ).toEqual({
       entries: [],
       message: { title: "" },
-      result: {}
+      result: {},
+      display:"none"
     });
   });
 });
