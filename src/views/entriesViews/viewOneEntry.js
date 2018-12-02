@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./navBar";
 import PropTypes from "prop-types";
 import {
   Button,
@@ -82,7 +81,6 @@ const ViewOneEntryView = props => {
 
   return (
     <div>
-      <NavBar />
       <div className="container">
         <Card id="add_entry">
           <CardBody>
