@@ -14,7 +14,7 @@ const NavBar = () => {
           <a href="/create">Add Entry</a>
           <div className="nav-right">
             <a href="#">Profile</a>
-            <a href="#">Logout</a>
+            <a href="/" onClick={handleClick}>Logout</a>
           </div>
         </nav>
       </div>
@@ -22,3 +22,6 @@ const NavBar = () => {
   );
 };
 export default NavBar;
+const handleClick =()=>{
+  localStorage.clear();
+};

@@ -35,3 +35,11 @@ export const editEntry = (id, data) => dispatch => {
     });
   });
 };
+export const deleteEntry = (id) => dispatch => {
+  axios.delete(BASE_URL + `/entries/${id}`, headers()).then(res => {
+    dispatch({
+      type: ACTION_TYPES.DELETE,
+      payload: res.data
+    });
+  });
+};

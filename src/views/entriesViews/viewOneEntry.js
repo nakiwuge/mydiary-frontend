@@ -11,8 +11,60 @@ const ViewOneEntryView = props => {
     handleSave,
     handleChange,
     editTitle,
-    editContent
+    editContent,
+    handleDelete,
+    handleClick,
+    delModal
   } = props;
+  const editModal = (
+    <form onSubmit={handleSave}>
+      <Modal isOpen={modal} toggle={toggle} className="">
+        <ModalHeader toggle={toggle}>Edit</ModalHeader>
+        <ModalBody>
+          <label htmlFor="title">
+            <b>Title</b>
+          </label>
+          <input name="title" value={editTitle} onChange={handleChange} />
+          <label htmlFor="content">
+            <b>Content</b>
+          </label>
+          <input name="content" value={editContent} onChange={handleChange} />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" type="submit" onClick={handleSave}>
+            save
+          </Button>{" "}
+          <Button color="secondary" onClick={handleClick}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </form>
+  );
+  const deleteModal = (
+    <Modal isOpen={delModal} toggle={toggle} className="">
+      <ModalHeader toggle={toggle}>delete</ModalHeader>
+      <ModalBody>
+        <h1>Are you sure?</h1>
+        <p>Do you want to delete this entry. </p>
+        <p>This action cannot be undone </p>
+      </ModalBody>
+      <ModalFooter>
+        <Button
+          color="primary"
+          type="submit"
+          onClick={handleDelete}
+          className="text button-danger"
+        >
+          Delete
+        </Button>{" "}
+        <Button color="secondary" onClick={handleClick}>
+          Cancel
+        </Button>
+      </ModalFooter>
+    </Modal>
+  );
+
   return (
     <div>
       <NavBar />
@@ -22,40 +74,19 @@ const ViewOneEntryView = props => {
         <div>
           <p>{entry.date}</p>
           <p>{entry.content}</p>
-
-          <button onClick={toggle} className="text" type="submit">
+          <button onClick={toggle} className="text" type="submit" id="edit-btn">
             edit
-          </button>
-          <button className="text button-danger" type="submit">
+          </button>{" "}
+          <button
+            id="delete-btn"
+            onClick={toggle}
+            className="text button-danger"
+            type="submit"
+          >
             delete
           </button>
-          <form onSubmit={handleSave}>
-            <Modal isOpen={modal} toggle={toggle} className="">
-              <ModalHeader toggle={toggle}>Edit</ModalHeader>
-              <ModalBody>
-                <label htmlFor="title">
-                  <b>Title</b>
-                </label>
-                <input name="title" value={editTitle} onChange={handleChange} />
-                <label htmlFor="content">
-                  <b>Content</b>
-                </label>
-                <input
-                  name="content"
-                  value={editContent}
-                  onChange={handleChange}
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" type="submit" onClick={handleSave}>
-                  save
-                </Button>{" "}
-                <Button color="secondary" onClick={toggle}>
-                  Cancel
-                </Button>
-              </ModalFooter>
-            </Modal>
-          </form>
+          {deleteModal}
+          {editModal}
         </div>
       </div>
     </div>
@@ -68,6 +99,9 @@ ViewOneEntryView.propTypes = {
   handleSave: PropTypes.func,
   handleChange: PropTypes.func,
   editTitle: PropTypes.string,
-  editContent: PropTypes.string
+  editContent: PropTypes.string,
+  handleDelete: PropTypes.func,
+  handleClick: PropTypes.func,
+  delModal: PropTypes.func
 };
 export default ViewOneEntryView;
