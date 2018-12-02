@@ -2,12 +2,18 @@ import { BASE_URL } from "../../baseUrl";
 import configureMockStore from "redux-mock-store";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
-import { getEntries, addEntry,getEntry } from "../../actions/entries/entries";
+import {
+  getEntries,
+  addEntry,
+  getEntry,
+  editEntry,
+  deleteEntry
+} from "../../actions/entries/entries";
 
 const response_data = {
   message: ""
 };
-let id = 2;
+
 describe("entry actions", () => {
   let store;
   let mock;
@@ -27,14 +33,18 @@ describe("entry actions", () => {
     expect(store.getActions()).toEqual([]);
   });
   it("the getEntry action should be able to entries ", () => {
-    mock.onGet(BASE_URL + `/entries/${id}`).reply(200, response_data);
-    getEntry(response_data)(store.dispatch);
+    mock.onGet(BASE_URL + "/entries/2").reply(200, response_data);
+    getEntry(2)(store.dispatch);
     expect(store.getActions()).toEqual([]);
   });
-  it("the getEntry action should be able to entries ", () => {
-    mock.onGet(BASE_URL + `/entries/${id}`).reply(200, response_data);
-    getEntry(response_data)(store.dispatch);
+  it("the editEntry action should be able to entries ", () => {
+    mock.onPut(BASE_URL + "/entries/2").reply(200, response_data);
+    editEntry(2)(store.dispatch);
     expect(store.getActions()).toEqual([]);
   });
-
+  it("the editEntry action should be able to entries ", () => {
+    mock.onPut(BASE_URL + "/entries/2").reply(200, response_data);
+    deleteEntry(2)(store.dispatch);
+    expect(store.getActions()).toEqual([]);
+  });
 });

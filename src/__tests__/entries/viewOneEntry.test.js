@@ -5,11 +5,15 @@ import { ViewOneEntry } from "../../components/entries/viewOneEntry";
 
 let getEntry = jest.fn();
 let editEntry = jest.fn();
+
 const props = {
   entry: {},
   getEntry,
   editEntry,
-  match: { params: { id: "2" } }
+  match: { params: { id: "2" } },
+  deleteEntry:jest.fn,
+  history: { push: jest.fn()}
+
 };
 let wrapper;
 describe("ViewOneEntry component", () => {
@@ -21,12 +25,26 @@ describe("ViewOneEntry component", () => {
     expect(props.editEntry).toBeCalled();
   });
   it("calls handleSave", () => {
-    expect(wrapper.instance().toggle()).toBeUndefined();
+    expect(wrapper.instance().toggle({
+      target: { type: "", value: "user", name: " " },
+      preventDefault: jest.fn()
+    })).toBeUndefined();
   });
 
   it("render changes state", () => {
     wrapper.instance().handleChange({
       target: { type: "", value: "user", name: " " },
+      preventDefault: jest.fn()
+    });
+   
+  });
+  it("handles delete", () => {
+    wrapper.instance().handleDelete({
+      preventDefault: jest.fn()
+    });
+  });
+  it("handles click", () => {
+    wrapper.instance().handleClick({
       preventDefault: jest.fn()
     });
   });

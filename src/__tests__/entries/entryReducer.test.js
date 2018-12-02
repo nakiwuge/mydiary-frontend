@@ -45,4 +45,28 @@ describe("entryReducer", () => {
       result: { title: "" }
     });
   });
+  it("updates state on EDIT_ENTRY action type", () => {
+    expect(
+      entryReducer(undefined, {
+        type: ACTION_TYPES.EDIT_ENTRY,
+        payload: { title: "" }
+      })
+    ).toEqual({
+      entries: [],
+      message: {},
+      result: { title: "" }
+    });
+  });
+  it("updates state on DELETE action type", () => {
+    expect(
+      entryReducer(undefined, {
+        type: ACTION_TYPES.DELETE,
+        payload: { title: "" }
+      })
+    ).toEqual({
+      entries: [],
+      message: { title: "" },
+      result: {}
+    });
+  });
 });

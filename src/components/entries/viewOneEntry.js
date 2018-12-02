@@ -1,21 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getEntry, editEntry } from "../../actions/entries/entries";
+import {
+  getEntry,
+  editEntry,
+  deleteEntry
+} from "../../actions/entries/entries";
 import ViewOneEntryView from "../../views/entriesViews/viewOneEntry";
 
 let id;
 export class ViewOneEntry extends Component {
   state = {
     modal: false,
+    delModal: false,
     title: "",
     content: " "
   };
 
-  toggle = () => {
+  toggle = e => {
+    e.preventDefault();
+    
+    if (e.target.id === "edit-btn") {
+      this.setState({
+        modal: true
+        
+      });
+    }else if(e.target.id === "delete-btn") {
+      this.setState({
+        delModal: true
+      });
+    }
+  }
+  handleClick = e => {
+    e.preventDefault();
     this.setState({
-      modal: !this.state.modal
+      modal: false,
+      delModal: false
     });
+
   };
   handleChange = e => {
     e.preventDefault();
@@ -28,6 +50,14 @@ export class ViewOneEntry extends Component {
     this.setState({
       modal: false
     });
+  };
+  handleDelete = e => {
+    e.preventDefault();
+    this.props.deleteEntry(id);
+    this.setState({
+      modal: false
+    });
+    this.props.history.push("/home");
   };
 
   componentWillReceiveProps(nextProps) {
@@ -52,7 +82,10 @@ export class ViewOneEntry extends Component {
       handleSave: this.handleSave,
       handleChange: this.handleChange,
       editTitle: this.state.title,
-      editContent: this.state.content
+      editContent: this.state.content,
+      handleDelete: this.handleDelete,
+      delModal: this.state.delModal,
+      handleClick:this.handleClick
     };
     return <ViewOneEntryView {...props} />;
   }
@@ -68,5 +101,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { getEntry, editEntry }
+  { getEntry, editEntry, deleteEntry }
 )(ViewOneEntry);

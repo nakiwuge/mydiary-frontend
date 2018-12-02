@@ -3,7 +3,7 @@ import { ACTION_TYPES } from "../actions/actionTypes";
 const initialState = {
   entries: [],
   message: {},
-  result:{}
+  result: {}
 };
 
 export default function entryReducer(state = initialState, action) {
@@ -27,6 +27,11 @@ export default function entryReducer(state = initialState, action) {
     return {
       ...state,
       result: action.payload
+    };
+  case ACTION_TYPES.DELETE:
+    return {
+      ...state,
+      message: action.payload
     };
   default:
     return state;
