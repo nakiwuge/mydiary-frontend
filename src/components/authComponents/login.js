@@ -8,10 +8,12 @@ import { getEntries } from "../../actions/entries/entries";
 export class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    hidden:true
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.token) {
+      this.setState({hidden:false});
       localStorage.setItem("token", nextProps.user.token);
       window.location = "/home";
     }
@@ -28,6 +30,7 @@ export class Login extends Component {
       password: this.state.password
     };
     this.props.loginUser(userData);
+    
   };
 
   render() {
@@ -36,7 +39,8 @@ export class Login extends Component {
       handleChange: this.handleChange,
       email: this.state.email,
       password: this.state.password,
-      error: this.props.user.message
+      error: this.props.user.message,
+      hidden:this.state.hidden
     };
     return <LoginView {...props} />;
   }

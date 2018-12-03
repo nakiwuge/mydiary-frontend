@@ -9,10 +9,12 @@ export class Register extends Component {
     username: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    hidden:true
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.message === "the registration was successful") {
+      this.setState({hidden:false});
       nextProps.history.push("/");
     }
   }
@@ -31,6 +33,7 @@ export class Register extends Component {
     };
     this.props.registerUser(userData);
   };
+ 
   render() {
     const props = {
       handleSubmit: this.handleSubmit,
@@ -39,7 +42,8 @@ export class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword,
-      error: this.props.user.message
+      error: this.props.user.message,
+      hidden:this.state.hidden
     };
     return <RegisterView {...props} />;
   }

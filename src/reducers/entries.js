@@ -3,15 +3,18 @@ import { ACTION_TYPES } from "../actions/actionTypes";
 const initialState = {
   entries: [],
   message: {},
-  result: {}
+  result: {},
+  display:"none"
 };
 
 export default function entryReducer(state = initialState, action) {
+
   switch (action.type) {
   case ACTION_TYPES.FETCH_ALL:
     return {
       ...state,
-      entries: action.payload
+      entries: action.payload.entries,
+      display:""
     };
   case ACTION_TYPES.ADD_ENTRY:
     return {
@@ -32,6 +35,12 @@ export default function entryReducer(state = initialState, action) {
     return {
       ...state,
       message: action.payload
+    };
+  case ACTION_TYPES.NO_ENTRY:
+    return {
+      ...state,
+      message: action.payload,
+      display:""
     };
   default:
     return state;

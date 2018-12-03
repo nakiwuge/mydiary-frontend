@@ -1,7 +1,19 @@
 import React from "react";
 import NavBar from "./navBar";
 import PropTypes from "prop-types";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Card,
+  CardText,
+  CardBody,
+  CardLink,
+  CardTitle,
+  CardSubtitle
+} from "reactstrap";
 
 const ViewOneEntryView = props => {
   const {
@@ -28,7 +40,10 @@ const ViewOneEntryView = props => {
           <label htmlFor="content">
             <b>Content</b>
           </label>
-          <input name="content" value={editContent} onChange={handleChange} />
+          <textarea name="content" value={editContent} onChange={handleChange} id="text-edit" >
+
+          </textarea>
+          {/* <input name="content" value={editContent} onChange={handleChange} /> */}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" type="submit" onClick={handleSave}>
@@ -69,25 +84,34 @@ const ViewOneEntryView = props => {
     <div>
       <NavBar />
       <div className="container">
-        {" "}
-        <h2>{entry.title}</h2>
-        <div>
-          <p>{entry.date}</p>
-          <p>{entry.content}</p>
-          <button onClick={toggle} className="text" type="submit" id="edit-btn">
-            edit
-          </button>{" "}
-          <button
-            id="delete-btn"
-            onClick={toggle}
-            className="text button-danger"
-            type="submit"
-          >
-            delete
-          </button>
-          {deleteModal}
-          {editModal}
-        </div>
+        <Card id="add_entry">
+          <CardBody>
+            <CardTitle>{entry.title}</CardTitle>
+            <CardSubtitle>{entry.date}</CardSubtitle>
+          </CardBody>
+          <CardBody>
+            <CardText>{entry.content}</CardText>
+            <CardLink
+              href="#"
+              onClick={toggle}
+              className="info-text"
+              type="submit"
+              id="edit-btn"
+            >
+              Edit
+            </CardLink>
+            <CardLink
+              href="#"
+              className="error"
+              id="delete-btn"
+              onClick={toggle}
+            >
+              delete
+            </CardLink>
+          </CardBody>
+        </Card>
+        {deleteModal}
+        {editModal}
       </div>
     </div>
   );

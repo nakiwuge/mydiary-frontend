@@ -19,25 +19,23 @@ export class ViewOneEntry extends Component {
 
   toggle = e => {
     e.preventDefault();
-    
+
     if (e.target.id === "edit-btn") {
       this.setState({
         modal: true
-        
       });
-    }else if(e.target.id === "delete-btn") {
+    } else if (e.target.id === "delete-btn") {
       this.setState({
         delModal: true
       });
     }
-  }
+  };
   handleClick = e => {
     e.preventDefault();
     this.setState({
       modal: false,
       delModal: false
     });
-
   };
   handleChange = e => {
     e.preventDefault();
@@ -57,7 +55,7 @@ export class ViewOneEntry extends Component {
     this.setState({
       modal: false
     });
-    this.props.history.push("/home");
+    window.location = "/home";
   };
 
   componentWillReceiveProps(nextProps) {
@@ -85,7 +83,7 @@ export class ViewOneEntry extends Component {
       editContent: this.state.content,
       handleDelete: this.handleDelete,
       delModal: this.state.delModal,
-      handleClick:this.handleClick
+      handleClick: this.handleClick
     };
     return <ViewOneEntryView {...props} />;
   }
