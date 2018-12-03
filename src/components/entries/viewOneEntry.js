@@ -4,9 +4,11 @@ import PropTypes from "prop-types";
 import {
   getEntry,
   editEntry,
-  deleteEntry
+  deleteEntry,
+  getEntries
 } from "../../actions/entries/entries";
 import ViewOneEntryView from "../../views/entriesViews/viewOneEntry";
+import NavBar from "../../views/entriesViews/navBar";
 
 let id;
 export class ViewOneEntry extends Component {
@@ -14,7 +16,8 @@ export class ViewOneEntry extends Component {
     modal: false,
     delModal: false,
     title: "",
-    content: " "
+    content: " ",
+ 
   };
 
   toggle = e => {
@@ -34,7 +37,6 @@ export class ViewOneEntry extends Component {
     e.preventDefault();
     this.setState({
       modal: false,
-      delModal: false
     });
   };
   handleChange = e => {
@@ -55,17 +57,20 @@ export class ViewOneEntry extends Component {
     this.setState({
       modal: false
     });
-    window.location = "/home";
-  };
-
+    this.props.getEntries();
+    this.props.history.push("/home");
+  }
+ 
   componentWillReceiveProps(nextProps) {
     this.setState({
       title: nextProps.entry.title,
       content: nextProps.entry.content
     });
+    
     if (nextProps.entry.message === "the update was successfull") {
       this.props.getEntry(id);
     }
+    
   }
 
   componentWillMount() {
@@ -73,6 +78,7 @@ export class ViewOneEntry extends Component {
     this.props.getEntry(id);
   }
   render() {
+    
     const props = {
       entry: this.props.entry,
       toggle: this.toggle,
@@ -84,8 +90,15 @@ export class ViewOneEntry extends Component {
       handleDelete: this.handleDelete,
       delModal: this.state.delModal,
       handleClick: this.handleClick
+      
     };
-    return <ViewOneEntryView {...props} />;
+    return (
+      <div>
+        <NavBar />
+        <ViewOneEntryView {...props} />;
+   
+      </div>
+    );
   }
 }
 
@@ -95,9 +108,10 @@ ViewOneEntry.propTypes = {
   match: PropTypes.func
 };
 const mapStateToProps = state => ({
-  entry: state.entryReducer.result
+  entry: state.entryReducer.result,
+  message:state.entryReducer.message
 });
 export default connect(
   mapStateToProps,
-  { getEntry, editEntry, deleteEntry }
+  { getEntry, editEntry, deleteEntry,getEntries }
 )(ViewOneEntry);

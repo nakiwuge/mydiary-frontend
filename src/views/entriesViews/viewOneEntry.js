@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./navBar";
 import PropTypes from "prop-types";
 import {
   Button,
@@ -40,10 +39,12 @@ const ViewOneEntryView = props => {
           <label htmlFor="content">
             <b>Content</b>
           </label>
-          <textarea name="content" value={editContent} onChange={handleChange} id="text-edit" >
-
-          </textarea>
-          {/* <input name="content" value={editContent} onChange={handleChange} /> */}
+          <textarea
+            name="content"
+            value={editContent}
+            onChange={handleChange}
+            id="text-edit"
+          />
         </ModalBody>
         <ModalFooter>
           <Button color="primary" type="submit" onClick={handleSave}>
@@ -70,6 +71,7 @@ const ViewOneEntryView = props => {
           type="submit"
           onClick={handleDelete}
           className="text button-danger"
+          id="delete-btn-modal"
         >
           Delete
         </Button>{" "}
@@ -82,7 +84,6 @@ const ViewOneEntryView = props => {
 
   return (
     <div>
-      <NavBar />
       <div className="container">
         <Card id="add_entry">
           <CardBody>
@@ -91,13 +92,7 @@ const ViewOneEntryView = props => {
           </CardBody>
           <CardBody>
             <CardText>{entry.content}</CardText>
-            <CardLink
-              href="#"
-              onClick={toggle}
-              className="info-text"
-              type="submit"
-              id="edit-btn"
-            >
+            <CardLink href="#" onClick={toggle} className="link" id="edit-btn">
               Edit
             </CardLink>
             <CardLink
