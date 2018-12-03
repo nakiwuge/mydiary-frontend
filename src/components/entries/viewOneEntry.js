@@ -7,6 +7,7 @@ import {
   deleteEntry
 } from "../../actions/entries/entries";
 import ViewOneEntryView from "../../views/entriesViews/viewOneEntry";
+import NavBar from "../../views/entriesViews/navBar";
 
 let id;
 export class ViewOneEntry extends Component {
@@ -34,7 +35,6 @@ export class ViewOneEntry extends Component {
     e.preventDefault();
     this.setState({
       modal: false,
-      delModal: false
     });
   };
   handleChange = e => {
@@ -63,6 +63,7 @@ export class ViewOneEntry extends Component {
       title: nextProps.entry.title,
       content: nextProps.entry.content
     });
+    
     if (nextProps.entry.message === "the update was successfull") {
       this.props.getEntry(id);
     }
@@ -73,6 +74,7 @@ export class ViewOneEntry extends Component {
     this.props.getEntry(id);
   }
   render() {
+    
     const props = {
       entry: this.props.entry,
       toggle: this.toggle,
@@ -85,7 +87,12 @@ export class ViewOneEntry extends Component {
       delModal: this.state.delModal,
       handleClick: this.handleClick
     };
-    return <ViewOneEntryView {...props} />;
+    return (
+      <div>
+        <NavBar />
+        <ViewOneEntryView {...props} />;
+      </div>
+    );
   }
 }
 

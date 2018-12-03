@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./navBar";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -34,7 +33,6 @@ const Home = props => {
   if (props.entries.length == 0) {
     return (
       <div style={{ display: props.display }}>
-        <NavBar />
         <Card id="welcome-card">
           <CardBody>
             <Card>
@@ -58,7 +56,6 @@ const Home = props => {
   }
   return (
     <div>
-      <NavBar />
       {entries}
     </div>
   );

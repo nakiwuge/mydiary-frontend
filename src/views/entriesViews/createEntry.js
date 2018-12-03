@@ -1,12 +1,11 @@
 import React from "react";
-import NavBar from "./navBar";
 import PropTypes from "prop-types";
 
 const CreateEntryView = props => {
   const { handleSubmit, title, content,handleChange} = props;
   return (
     <div>
-      <NavBar />
+    
       <div>
         <form onSubmit={handleSubmit}>
           <h1>Add Entry</h1>

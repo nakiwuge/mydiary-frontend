@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Home from "../../views/entriesViews/home";
 import { getEntries } from "../../actions/entries/entries";
+import NavBar from "../../views/entriesViews/navBar";
 
 export class ViewEntries extends Component {
   state = { display: "none" };
@@ -12,7 +13,6 @@ export class ViewEntries extends Component {
   handleClick = id => {
     this.props.history.push(`/home/${id}`);
   };
- 
   render() {
     const props = {
       entries: this.props.entries,
@@ -20,7 +20,12 @@ export class ViewEntries extends Component {
       display:this.props.display
     
     };
-    return <Home {...props} />;
+    return (
+      <div>
+        <NavBar />
+        <Home {...props} />;
+      </div>
+    );
   }
 }
 
