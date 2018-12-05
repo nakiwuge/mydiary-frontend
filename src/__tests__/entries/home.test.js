@@ -5,7 +5,8 @@ import Home from "../../views/entriesViews/home";
 import NavBar from "../../views/entriesViews/navBar";
 
 const props = {
-  entries: { map: jest.fn }
+  entries: { map: jest.fn },
+  msg:{}
 };
 
 describe("Home component", () => {

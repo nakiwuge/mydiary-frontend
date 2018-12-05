@@ -7,7 +7,8 @@ describe("entryReducer", () => {
       entries: [],
       message: {},
       result: {},
-      display:"none"
+      display:"none",
+      messageEmpty:{}
     });
   });
   it("updates state on FETCH_ALL action type", () => {
@@ -20,7 +21,8 @@ describe("entryReducer", () => {
       entries: undefined,
       message: {},
       result: {},
-      display:""
+      display:"",
+      messageEmpty:""
     });
   });
   it("updates state on ADD_ENTRY action type", () => {
@@ -33,7 +35,8 @@ describe("entryReducer", () => {
       entries: [],
       message: "register",
       result: {},
-      display:"none"
+      display:"none",
+      messageEmpty:{}
     });
   });
   it("updates state on GET_ENTRY action type", () => {
@@ -46,7 +49,8 @@ describe("entryReducer", () => {
       entries: [],
       message: {},
       result: { title: "" },
-      display:"none"
+      display:"none",
+      messageEmpty:{}
     });
   });
   it("updates state on EDIT_ENTRY action type", () => {
@@ -59,7 +63,8 @@ describe("entryReducer", () => {
       entries: [],
       message: {},
       result: { title: "" },
-      display:"none"
+      display:"none",
+      messageEmpty:{}
     });
   });
   it("updates state on DELETE action type", () => {
@@ -72,7 +77,8 @@ describe("entryReducer", () => {
       entries: [],
       message: { title: "" },
       result: {},
-      display:"none"
+      display:"none",
+      messageEmpty:{}
     });
   });
 });

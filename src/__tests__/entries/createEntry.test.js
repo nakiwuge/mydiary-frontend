@@ -1,22 +1,26 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import "../../setupTests";
-import {
-  CreateEntry
-} from "../../components/entries/createEntry";
-
+import { CreateEntry } from "../../components/entries/createEntry";
+import { MemoryRouter } from "react-router-dom";
 let addEntry = jest.fn();
 const props = {
   message: {},
   history: { push: "/home" },
   addEntry,
+  getEntries: jest.fn()
 };
 
 describe("CreateEntry component", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<CreateEntry {...props} />);
+    let component = mount(
+      <MemoryRouter>
+        <CreateEntry {...props} />
+      </MemoryRouter>
+    );
+    wrapper = component.find("CreateEntry");
   });
   it("render changes state", () => {
     wrapper.instance().handleChange({

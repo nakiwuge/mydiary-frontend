@@ -1,29 +1,28 @@
 import React from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <div className="navContainer">
-      <Navbar  light expand="md">
-        <NavbarBrand href="/home">My Diary</NavbarBrand>
+      <Navbar light expand="md">
+        <Link to="/home">
+          {" "}
+          <NavbarBrand href="#">My Diary</NavbarBrand>
+        </Link>
 
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink id="home-link"href="/home">Home</NavLink>
+            <Link id="home-link" to="/home">
+              Home
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLink href="/create">Add Entry</NavLink>
+            <Link to="/create">Add Entry</Link>
           </NavItem>
           <NavItem>
-            <NavLink href="/" onClick={handleClick}>
+            <Link to="/" onClick={handleClick}>
               Logout
-            </NavLink>
+            </Link>
           </NavItem>
         </Nav>
       </Navbar>

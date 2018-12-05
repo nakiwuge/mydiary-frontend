@@ -7,9 +7,11 @@ import NavBar from "../../views/entriesViews/navBar";
 
 export class ViewEntries extends Component {
   state = { display: "none" };
+  
   componentWillMount() {
     this.props.getEntries();
   }
+ 
   handleClick = id => {
     this.props.history.push(`/home/${id}`);
   };
@@ -17,10 +19,12 @@ export class ViewEntries extends Component {
     const props = {
       entries: this.props.entries,
       handleClick: this.handleClick,
-      display:this.props.display
-    
+      display:this.props.display,
+      msg:this.props.msg
     };
+
     return (
+     
       <div>
         <NavBar />
         <Home {...props} />;
@@ -34,7 +38,8 @@ ViewEntries.propTypes = {
 };
 const mapStateToProps = state => ({
   entries: state.entryReducer.entries,
-  display:state.entryReducer.display
+  display:state.entryReducer.display,
+  msg:state.entryReducer.messageEmpty
 });
 export default connect(
   mapStateToProps,

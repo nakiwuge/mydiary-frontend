@@ -8,6 +8,7 @@ import {
   CardTitle,
   CardSubtitle
 } from "reactstrap";
+import {Link} from "react-router-dom";
 
 const Home = props => {
   const entries = props.entries.map(entry => (
@@ -30,7 +31,7 @@ const Home = props => {
       </Card>
     </div>
   ));
-  if (props.entries.length == 0) {
+  if (props.entries.length == 0 || props.msg.message=== "there are no entries please add an entry") {
     return (
       <div style={{ display: props.display }}>
         <Card id="welcome-card">
@@ -42,9 +43,9 @@ const Home = props => {
               <CardBody>
                 <CardText>
                   Please click{" "}
-                  <CardLink href="/create" className="info-text">
+                  <Link to="/create" className="info-text">
                     here
-                  </CardLink>{" "}
+                  </Link>{" "}
                   to add an entry.
                 </CardText>
               </CardBody>
@@ -55,6 +56,7 @@ const Home = props => {
     );
   }
   return (
+   
     <div>
       {entries}
     </div>
@@ -63,6 +65,7 @@ const Home = props => {
 Home.propTypes = {
   entries: PropTypes.array,
   handleClick: PropTypes.func,
-  display: PropTypes.string
+  display: PropTypes.string,
+  msg:PropTypes.string
 };
 export default Home;

@@ -2,7 +2,7 @@ import React from "react";
 import { mount, shallow } from "enzyme";
 import "../../setupTests";
 import { ViewOneEntry } from "../../components/entries/viewOneEntry";
-
+import { MemoryRouter } from "react-router-dom";
 let getEntry = jest.fn();
 let editEntry = jest.fn();
 
@@ -12,12 +12,19 @@ const props = {
   editEntry,
   match: { params: { id: "2" } },
   deleteEntry: jest.fn,
-  history: { push: jest.fn() }
+  history: { push: jest.fn() },
+  getEntries: jest.fn()
 };
 let wrapper;
 describe("ViewOneEntry component", () => {
+  let component;
   beforeEach(() => {
-    wrapper = mount(<ViewOneEntry {...props} />);
+    component = mount(
+      <MemoryRouter>
+        <ViewOneEntry {...props} />
+      </MemoryRouter>
+    );
+    wrapper = component.find("ViewOneEntry");
   });
   it("calls handleSave", () => {
     wrapper.instance().handleSave({ preventDefault: jest.fn() });

@@ -4,7 +4,8 @@ const initialState = {
   entries: [],
   message: {},
   result: {},
-  display:"none"
+  display:"none",
+  messageEmpty:{}
 };
 
 export default function entryReducer(state = initialState, action) {
@@ -13,6 +14,7 @@ export default function entryReducer(state = initialState, action) {
   case ACTION_TYPES.FETCH_ALL:
     return {
       ...state,
+      messageEmpty:"",
       entries: action.payload.entries,
       display:""
     };
@@ -39,7 +41,7 @@ export default function entryReducer(state = initialState, action) {
   case ACTION_TYPES.NO_ENTRY:
     return {
       ...state,
-      message: action.payload,
+      messageEmpty: action.payload,
       display:""
     };
   default:
